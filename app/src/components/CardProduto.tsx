@@ -62,7 +62,7 @@ export function CardProduto() {
   return (
     <main
       style={{
-        width: "90%",
+        width: "100%",
         margin: "0 auto",
         color: "white",
         borderRadius: "8px",
@@ -79,8 +79,7 @@ export function CardProduto() {
               style={{
                 width: "100%",
                 height: "68vh",
-                objectFit: "cover",
-                borderRadius: "8px",
+                objectFit: "cover"
               }}
             />
           </div>
@@ -88,7 +87,7 @@ export function CardProduto() {
       </Slider>
 
       {/* Slider de miniaturas - imagens do produto atual */}
-      <div style={{ marginTop: "12px", maxHeight: "70px", overflow: "hidden" }}>
+      <div style={{ marginTop: "12px", height: "70px", width: "150px",marginLeft: "auto", marginRight:"auto", overflow: "hidden" }}>
         <Slider {...settingsThumbs} ref={thumbSlider}>
           {produtoAtual.images.map((img, idx) => (
             <div
@@ -107,9 +106,6 @@ export function CardProduto() {
                   width: "100%",
                   height: "60px",
                   objectFit: "cover",
-                  border:
-                    indexImagem === idx ? "2px solid #00f" : "1px solid #ccc",
-                  borderRadius: "4px",
                   margin: "4px 0",
                 }}
               />
