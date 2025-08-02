@@ -28,7 +28,7 @@ export function CardProduto() {
   const settingsMain: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     fade: true,
     infinite: false,
     afterChange: (currentSlide) => {
@@ -41,12 +41,9 @@ export function CardProduto() {
     slidesToScroll: 1,
     focusOnSelect: true,
     swipeToSlide: true,
-    arrows: true,
+    arrows: false,
     centerMode: produtoAtual.images.length > 4,
     centerPadding: "0px",
-    beforeChange: (_, next) => {
-      setIndexImagem(next);
-    },
   };
 
   const settingsProdutos: Settings = {
@@ -63,36 +60,56 @@ export function CardProduto() {
     <main
       style={{
         width: "100%",
-        margin: "0 auto",
+        margin: "auto",
         color: "white",
         borderRadius: "8px",
         position: "relative",
       }}
     >
-      {/* Slider de produtos - mostra a primeira imagem de cada produto */}
+      {/* Slider de produtos (um por vez) */}
       <Slider {...settingsProdutos} initialSlide={indexProduto}>
-        {produtos.map((produto, idx) => (
-          <div key={produto.id + "-" + idx}>
+        {produtos.map((produto) => (
+          <div key={produto.id}>
+          </div>
+        ))}
+      </Slider>
+
+      {/* Slider principal das imagens do produto atual */}
+      <Slider {...settingsMain} ref={mainSlider}>
+        {produtoAtual.images.map((img, i) => (
+          <div key={img.id + "-" + i}>
             <img
-              src={produto.images[0]?.path}
-              alt={`${produto.name} - imagem principal`}
+              src={img.path}
+              alt={`Imagem ${i + 1}`}
               style={{
                 width: "100%",
                 height: "68vh",
-                objectFit: "cover"
+                objectFit: "cover",
               }}
             />
           </div>
         ))}
       </Slider>
 
-      {/* Slider de miniaturas - imagens do produto atual */}
-      <div style={{ marginTop: "12px", height: "70px", width: "150px",marginLeft: "auto", marginRight:"auto", overflow: "hidden" }}>
+      {/* Miniaturas */}
+      <div
+        style={{
+          marginTop: "12px",
+          height: "70px",
+          width: "150px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          overflow: "hidden",
+        }}
+      >
         <Slider {...settingsThumbs} ref={thumbSlider}>
           {produtoAtual.images.map((img, idx) => (
             <div
               key={img.id}
-              onClick={() => setIndexImagem(idx)}
+              onClick={() => {
+                setIndexImagem(idx);
+                mainSlider.current?.slickGoTo(idx); // Garante mudança
+              }}
               style={{
                 padding: "0 3px",
                 cursor: "pointer",
@@ -107,6 +124,11 @@ export function CardProduto() {
                   height: "60px",
                   objectFit: "cover",
                   margin: "4px 0",
+                  border:
+                    indexImagem === idx
+                      ? "2px solid #00f"
+                      : "1px solid #ccc",
+                  borderRadius: "4px",
                 }}
               />
             </div>
