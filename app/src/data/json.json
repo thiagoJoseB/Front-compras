@@ -1,0 +1,395 @@
+{
+    "products": [
+      {
+        "id": 24,
+        "name": "Pijama inverno",
+        "hexCode": "#000000",
+        "skus": [
+          {
+            "id": 11,
+            "size": "P",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612311,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 12,
+            "size": "M",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612311,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.01-preto",
+        "type": "NACIONAL",
+        "gender": "MASCULINO",
+        "promptDelivery": true,
+        "description": null,
+        "categories": "Pijamas",
+        "subcategories": "Bolinha",
+        "images": [
+          {
+            "id": 24,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg",
+            "order": 1
+          },
+          {
+            "id": 25,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg",
+            "order": 2
+          },
+          {
+            "id": 37,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "name": "Pijama inverno",
+        "hexCode": "#ff0000",
+        "skus": [
+          {
+            "id": 13,
+            "size": "G",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612312,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 14,
+            "size": "GG",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612312,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.01-vermelho",
+        "type": "NACIONAL",
+        "gender": "MASCULINO",
+        "promptDelivery": true,
+        "description": null,
+        "categories": "Pijamas",
+        "subcategories": "bolinha",
+        "images": [
+          {
+            "id": 27,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/spiderman.jpg",
+            "order": 1
+          },
+          {
+            "id": 36,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/spiderman.jpg",
+            "order": 2
+          },
+          {
+            "id": 29,
+           "path": "https://www.simplifiedcoding.net/demos/marvel/spiderman.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "name": "Era Shocks",
+        "hexCode": "#0000ff",
+        "skus": [
+          {
+            "id": 17,
+            "size": "38",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612313,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.02-amarelo",
+        "type": "NACIONAL",
+        "gender": "MASCULINO",
+        "promptDelivery": true,
+        "description": "Super elegante",
+        "categories": "Tênis",
+        "subcategories": "Passeio",
+        "images": [
+          {
+            "id": 195,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/logan.jpg",
+            "order": 1
+          },
+          {
+            "id": 196,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/logan.jpg",
+            "order": 2
+          },
+          {
+            "id": 197,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/logan.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "name": "Shoes Wave",
+        "hexCode": "#ff0000",
+        "skus": [
+          {
+            "id": 18,
+            "size": "38",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612314,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 19,
+            "size": "40",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612314,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.03-vermelho",
+        "type": "NACIONAL",
+        "gender": "FAT",
+        "promptDelivery": true,
+        "description": "Shoes wave possui a tecnologia Wave, é uma placa WAVE em TPU que proporciona maior estabilidade e absorção de impacto.",
+        "categories": "Sapatos",
+        "subcategories": "Corrida",
+        "images": [
+          {
+            "id": 108,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/thor.jpg",
+            "order": 1
+          },
+          {
+            "id": 110,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/thor.jpg",
+            "order": 2
+          },
+          {
+            "id": 109,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/thor.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "name": "Shoes Wave",
+        "hexCode": "#0000FF",
+        "skus": [
+          {
+            "id": 20,
+            "size": "38",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612315,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 21,
+            "size": "40",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612315,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.03-azul",
+        "type": "NACIONAL",
+        "gender": "FAT",
+        "promptDelivery": true,
+        "description": "Shoes wave possui a tecnologia Wave, é uma placa WAVE em TPU que proporciona maior estabilidade e absorção de impacto.",
+        "categories": "Sapatos",
+        "subcategories": "Corrida",
+        "images": [
+          {
+            "id": 267,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/captainamerica.jpg",
+            "order": 1
+          },
+          {
+            "id": 268,
+           "path": "https://www.simplifiedcoding.net/demos/marvel/captainamerica.jpg",
+            "order": 2
+          },
+          {
+            "id": 98,
+           "path": "https://www.simplifiedcoding.net/demos/marvel/captainamerica.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "name": "Camiseta básica",
+        "hexCode": null,
+        "skus": [
+          {
+            "id": 45,
+            "size": "P",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612316,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 46,
+            "size": "G",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612316,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.04-marrom",
+        "type": "NACIONAL",
+        "gender": "UNISSEX",
+        "promptDelivery": true,
+        "description": null,
+        "categories": "Camiseta",
+        "subcategories": "Básica",
+        "images": [
+          {
+            "id": 137,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/thor.jpg",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "name": "Calça do Bob Esponja",
+        "hexCode": "#b14d28",
+        "skus": [
+          {
+            "id": 68,
+            "size": "M",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612317,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 203,
+            "size": "P",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612317,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 204,
+            "size": "G",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612317,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.05-marrom",
+        "type": "NACIONAL",
+        "gender": "MASCULINO",
+        "promptDelivery": false,
+        "description": "Calça quadrada do Bob Esponja!",
+        "categories": "Calças",
+        "subcategories": "Quadrado",
+        "images": [
+          {
+            "id": 209,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/thor.jpg",
+            "order": 1
+          },
+          {
+            "id": 106,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/captainamerica.jpg",
+            "order": 2
+          },
+          {
+            "id": 178,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/spiderman.jpg",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "name": "Camisa Infantil",
+        "hexCode": "#A020F0",
+        "skus": [
+          {
+            "id": 89,
+            "size": "P",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612321,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 94,
+            "size": "M",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612321,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          },
+          {
+            "id": 95,
+            "size": "G",
+            "stock": 21,
+            "price": "49.99",
+            "code": 78945612321,
+            "minQuantity": 2,
+            "multipleQuantity": 2
+          }
+        ],
+        "reference": "15.1504.06-roxo",
+        "type": "NACIONAL",
+        "gender": "INFANTIL",
+        "promptDelivery": true,
+        "description": "descrição",
+        "categories": "Camiseta",
+        "subcategories": null,
+        "images": [
+          {
+            "id": 121,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/logan.jpg",
+            "order": 1
+          },
+          {
+            "id": 119,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg",
+            "order": 2
+          },
+          {
+            "id": 120,
+            "path": "https://www.simplifiedcoding.net/demos/marvel/captainamerica.jpg",
+            "order": 3
+          }
+        ]
+      }
+    ]
+  }
