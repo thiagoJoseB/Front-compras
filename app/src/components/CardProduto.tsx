@@ -65,6 +65,9 @@ export function CardProduto() {
   const [indexProduto, setIndexProduto] = useState(0);
   const [indexImagem, setIndexImagem] = useState(0);
   const [modalAberta, setModalAberta] = useState(false);
+  const [modalLupaAberta, setModalLupaAberta] = useState(false);
+  const [buscaReference, setBuscaReference] = useState("");
+  const [produtoEncontrado, setProdutoEncontrado] = useState<typeof produtos[0] | null>(null);
 
   const mainSlider = useRef<Slider | null>(null);
   const thumbSlider = useRef<Slider | null>(null);
@@ -79,6 +82,11 @@ export function CardProduto() {
   useEffect(() => {
     mainSlider.current?.slickGoTo(indexImagem);
   }, [indexImagem]);
+
+  function buscarProduto() {
+    const produto = produtos.find((p) => p.reference.toLowerCase() === buscaReference.toLowerCase());
+    setProdutoEncontrado(produto || null);
+  }
 
   const settingsMain: Settings = {
     slidesToShow: 1,
@@ -121,16 +129,16 @@ export function CardProduto() {
         position: "relative",
       }}
     >
-      {/* Slider de produtos (um por vez) */}
+      {/* Slider de produtos */}
       <Slider {...settingsProdutos} initialSlide={indexProduto}>
         {produtos.map((produto) => (
           <div key={produto.id}>
-            {/* Se quiser conteúdo extra no slide, pode colocar aqui */}
+            {/* Pode adicionar conteúdo extra aqui se quiser */}
           </div>
         ))}
       </Slider>
 
-      {/* Slider principal das imagens do produto atual */}
+      {/* Slider principal das imagens */}
       <Slider {...settingsMain} ref={mainSlider}>
         {produtoAtual.images.map((img, i) => (
           <div key={img.id + "-" + i}>
@@ -188,7 +196,7 @@ export function CardProduto() {
         </Slider>
       </div>
 
-      {/* Ícone detalhes com onClick para abrir modal */}
+      {/* Ícone detalhes */}
       <div
         style={{
           width: "35px",
@@ -217,12 +225,18 @@ export function CardProduto() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          setBuscaReference("");
+          setProdutoEncontrado(null);
+          setModalLupaAberta(true);
         }}
       >
         <img src={lupa} alt="Lupa" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
       </div>
 
-      {/* Modal com detalhes do produto */}
+      {/* Modal detalhes do produto */}
       <Modal isOpen={modalAberta} onClose={() => setModalAberta(false)}>
         <h2>{produtoAtual.name}</h2>
         <p><strong>Referência:</strong> {produtoAtual.reference}</p>
@@ -240,6 +254,39 @@ export function CardProduto() {
             </li>
           ))}
         </ul>
+      </Modal>
+
+      {/* Modal busca pela lupa */}
+      <Modal isOpen={modalLupaAberta} onClose={() => setModalLupaAberta(false)}>
+        <input
+          type="text"
+          placeholder="Digite a referência"
+          value={buscaReference}
+          onChange={(e) => setBuscaReference(e.target.value)}
+          style={{ width: "94%", padding: "8px", marginBottom: "12px", fontSize: "16px", marginTop:"10px" }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") buscarProduto();
+          }}
+        />
+        <button onClick={buscarProduto} style={{ padding: "8px 16px", fontSize: "16px", cursor: "pointer" , backgroundColor : "#87A6B4" }}>
+          Buscar
+        </button>
+
+        <div style={{ marginTop: "20px" }}>
+          {produtoEncontrado ? (
+            <>
+              <h3>{produtoEncontrado.name}</h3>
+              <p><strong>Referência:</strong> {produtoEncontrado.reference}</p>
+              <p><strong>Categoria:</strong> {produtoEncontrado.categories}</p>
+              <p><strong>Descrição:</strong> {produtoEncontrado.description || "Sem descrição disponível."}</p>
+              <p><strong>Preço (do primeiro SKU):</strong> R$ {produtoEncontrado.skus[0].price}</p>
+            </>
+          ) : buscaReference ? (
+            <p>Produto não encontrado.</p>
+          ) : (
+            <p></p>
+          )}
+        </div>
       </Modal>
     </main>
   );
