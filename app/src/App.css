@@ -30,8 +30,8 @@
 .slick-prev,
 .slick-next {
   z-index: 10;
-  width: 25px;
-  height: 45px;
+  width: 41px;
+  height: 6vh;
   border-radius: 50%;
   margin-top: 63vh;
 }
@@ -39,11 +39,11 @@
 .slick-prev:before,
 .slick-next:before {
   font-size: 20px;
-  color: #fff;
+  color: #87A6B4;
 }
 
 .slick-prev {
-  left: 10px !important;
+  left: 23px !important;
 }
 
 .slick-next {

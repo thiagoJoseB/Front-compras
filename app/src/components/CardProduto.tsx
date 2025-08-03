@@ -6,6 +6,12 @@ import data from "../data/json.json";
 import type { Settings } from "react-slick";
 import lupa from "../img/lupa.png";
 import detalhes from "../img/inte.png";
+import car from "../img/car.png";
+import down from "../img/down-arrow.png"
+import add from "../img/add.png";
+import remo from "../img/remove.png";
+
+
 
 function Modal({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) {
   if (!isOpen) return null;
@@ -60,6 +66,8 @@ function Modal({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
 }
 
 export function CardProduto() {
+
+  
   const produtos = data.products;
 
   const [indexProduto, setIndexProduto] = useState(0);
@@ -119,6 +127,40 @@ export function CardProduto() {
     },
   };
 
+  const [quantidades, setQuantidades] = useState<{ [produtoId: string]: number }>({});
+  const [valorGeral, setValorGeral] = useState(0);
+  
+  const precoUnitario = parseFloat(produtoAtual.skus[0]?.price ?? "0");
+  const quantidadeAtual = quantidades[produtoAtual.id] || 0;
+  const valorDoProdutoAtual = (quantidadeAtual * precoUnitario).toFixed(2);
+  const valorTotalGeral = valorGeral.toFixed(2);
+  
+  function adicionar() {
+    const novaQtd = (quantidades[produtoAtual.id] || 0) + 1;
+  
+    setQuantidades((prev) => ({
+      ...prev,
+      [produtoAtual.id]: novaQtd,
+    }));
+  
+    setValorGeral((total) => total + precoUnitario);
+  }
+  
+  function remover() {
+    const qtdAtual = quantidades[produtoAtual.id] || 0;
+    if (qtdAtual > 0) {
+      const novaQtd = qtdAtual - 1;
+  
+      setQuantidades((prev) => ({
+        ...prev,
+        [produtoAtual.id]: novaQtd,
+      }));
+  
+      setValorGeral((total) => total - precoUnitario);
+    }
+  }
+  
+
   return (
     <main
       style={{
@@ -149,6 +191,7 @@ export function CardProduto() {
                 width: "100%",
                 height: "68vh",
                 objectFit: "cover",
+                paddingLeft:"12px"
               }}
             />
           </div>
@@ -187,7 +230,6 @@ export function CardProduto() {
                   height: "60px",
                   objectFit: "cover",
                   margin: "4px 0",
-                  border: indexImagem === idx ? "2px solid #00f" : "1px solid #ccc",
                   borderRadius: "4px",
                 }}
               />
@@ -203,7 +245,7 @@ export function CardProduto() {
           height: "40px",
           backgroundColor: "red",
           marginLeft: "12vw",
-          marginTop: "-38px",
+          marginTop: "-40px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -288,6 +330,105 @@ export function CardProduto() {
           )}
         </div>
       </Modal>
+
+
+      <div
+        style={{
+          width: "34px",
+          height: "34px",
+          backgroundColor: "blue",
+          marginLeft: "66vw",
+          marginTop: "-9vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <img src={car} alt="Carinho" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
+      </div>
+
+      <div
+  className="informacoes"
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "1vw",
+    marginTop: "15px",
+  }}
+>
+  {/* Imagem do produto */}
+  <div className="info" style={{ width: "12%", textAlign: "center" }}>
+    <img
+      src={down}
+      style={{
+        width: "20px",
+        height: "20px"
+      }}
+    />
+  </div>
+
+  {/* Nome */}
+  <div className="info" style={{ width: "25%", textAlign: "center" ,color: "black"}}>
+    {produtoAtual.name}
+  </div>
+
+  {/* Referência */}
+  <div className="info" style={{ width: "25%", textAlign: "center" , color: "#87A6B4"}}>
+    {produtoAtual.reference}
+  </div>
+
+  {/* Preço */}
+  <div className="info" style={{ width: "20%", textAlign: "center",color: "black" }}>
+    {produtoAtual.skus[0].price}
+  </div>
+</div>
+
+<div
+  className="divPai"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "1.5vw",
+  }}
+>
+  {/* Valor do produto atual */}
+  <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
+  <p style={{ color: "black" }}>Atual</p> <p style={{color: "#87A6B4"}}> {(quantidadeAtual * precoUnitario).toFixed(2)}</p>
+  </div>
+
+  {/* Botão de adicionar */}
+  <div
+    style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
+    onClick={adicionar}
+  >
+    <img src={add} alt="Adicionar" style={{ width: "30px", height: "30px" }} />
+  </div>
+
+  {/* Quantidade atual */}
+  <div style={{ width: "10%", textAlign: "center", fontSize: "16px" }}>
+    <p style={{ color: "black" }}> {quantidadeAtual}</p>
+  </div>
+
+  {/* Botão de remover */}
+  <div
+    style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
+    onClick={remover}
+  >
+    <img src={remo} alt="Remover" style={{ width: "30px", height: "30px" }} />
+  </div>
+
+  {/* Valor total acumulado */}
+  <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
+    <p style={{ color: "black" }}>Acumulado:</p> <p style={{color: "#87A6B4"}}>R$ {valorTotalGeral}</p>
+  </div>
+</div>
+
+
+
+
     </main>
   );
 }
