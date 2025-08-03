@@ -160,6 +160,16 @@ export function CardProduto() {
     }
   }
   
+  const [quantidadesPorSku, setQuantidadesPorSku] = useState<Record<number, number>>({});
+
+const skusPorTamanho = produtoAtual.skus.map((sku) => ({
+  id: sku.id,
+  size: sku.size,
+  qtd: quantidadesPorSku[sku.id!] || 0,
+}));
+
+const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + val, 0);
+
 
   return (
     <main
@@ -171,16 +181,16 @@ export function CardProduto() {
         position: "relative",
       }}
     >
-      {/* Slider de produtos */}
+
       <Slider {...settingsProdutos} initialSlide={indexProduto}>
         {produtos.map((produto) => (
           <div key={produto.id}>
-            {/* Pode adicionar conteúdo extra aqui se quiser */}
+            
           </div>
         ))}
       </Slider>
 
-      {/* Slider principal das imagens */}
+   
       <Slider {...settingsMain} ref={mainSlider}>
         {produtoAtual.images.map((img, i) => (
           <div key={img.id + "-" + i}>
@@ -198,7 +208,7 @@ export function CardProduto() {
         ))}
       </Slider>
 
-      {/* Miniaturas */}
+
       <div
         style={{
           height: "50px",
@@ -238,7 +248,6 @@ export function CardProduto() {
         </Slider>
       </div>
 
-      {/* Ícone detalhes */}
       <div
         style={{
           width: "35px",
@@ -256,7 +265,6 @@ export function CardProduto() {
         <img src={detalhes} alt="Detalhes" style={{ maxWidth: "47px", maxHeight: "7vh" }} />
       </div>
 
-      {/* Ícone lupa */}
       <div
         style={{
           width: "36px",
@@ -278,7 +286,7 @@ export function CardProduto() {
         <img src={lupa} alt="Lupa" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
       </div>
 
-      {/* Modal detalhes do produto */}
+
       <Modal isOpen={modalAberta} onClose={() => setModalAberta(false)}>
         <h2>{produtoAtual.name}</h2>
         <p><strong>Referência:</strong> {produtoAtual.reference}</p>
@@ -298,7 +306,6 @@ export function CardProduto() {
         </ul>
       </Modal>
 
-      {/* Modal busca pela lupa */}
       <Modal isOpen={modalLupaAberta} onClose={() => setModalLupaAberta(false)}>
         <input
           type="text"
@@ -348,7 +355,7 @@ export function CardProduto() {
         <img src={car} alt="Carinho" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
       </div>
 
-      <div
+ <div
   className="informacoes"
   style={{
     display: "flex",
@@ -358,7 +365,7 @@ export function CardProduto() {
     marginTop: "15px",
   }}
 >
-  {/* Imagem do produto */}
+
   <div className="info" style={{ width: "12%", textAlign: "center" }}>
     <img
       src={down}
@@ -369,17 +376,17 @@ export function CardProduto() {
     />
   </div>
 
-  {/* Nome */}
+
   <div className="info" style={{ width: "25%", textAlign: "center" ,color: "black"}}>
     {produtoAtual.name}
   </div>
 
-  {/* Referência */}
+
   <div className="info" style={{ width: "25%", textAlign: "center" , color: "#87A6B4"}}>
     {produtoAtual.reference}
   </div>
 
-  {/* Preço */}
+
   <div className="info" style={{ width: "20%", textAlign: "center",color: "black" }}>
     {produtoAtual.skus[0].price}
   </div>
@@ -394,12 +401,12 @@ export function CardProduto() {
     gap: "1.5vw",
   }}
 >
-  {/* Valor do produto atual */}
+
   <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
   <p style={{ color: "black" }}>Atual</p> <p style={{color: "#87A6B4"}}> {(quantidadeAtual * precoUnitario).toFixed(2)}</p>
   </div>
 
-  {/* Botão de adicionar */}
+
   <div
     style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
     onClick={adicionar}
@@ -407,12 +414,12 @@ export function CardProduto() {
     <img src={add} alt="Adicionar" style={{ width: "30px", height: "30px" }} />
   </div>
 
-  {/* Quantidade atual */}
+
   <div style={{ width: "10%", textAlign: "center", fontSize: "16px" }}>
     <p style={{ color: "black" }}> {quantidadeAtual}</p>
   </div>
 
-  {/* Botão de remover */}
+
   <div
     style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
     onClick={remover}
@@ -420,15 +427,81 @@ export function CardProduto() {
     <img src={remo} alt="Remover" style={{ width: "30px", height: "30px" }} />
   </div>
 
-  {/* Valor total acumulado */}
+
   <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
     <p style={{ color: "black" }}>Acumulado:</p> <p style={{color: "#87A6B4"}}>R$ {valorTotalGeral}</p>
   </div>
 </div>
 
 
+<div style={{
+  display: "flex",
+  alignItems: "center",
+  gap: "1vw",
+  marginTop: "3px",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  paddingBottom:"1vh"
+}}>
+  {skusPorTamanho.map((sku) => (
+    <div key={sku.id} style={{ textAlign: "center" }}>
+      <div style={{
+        width: "20px",
+        height: "20px",
+        borderRadius: "50%",
+        backgroundColor: "#87A6B4",
+        border: "2px solid white",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: "bold",
+        color: "white",
+        marginLeft: "10vw",
+        fontSize: "11px"
+      }}>
+        {sku.size}
+      </div>
 
+      <div style={{
+        width: "30px",
+        height: "23px",
+        backgroundColor: "#fff",
+        border: "2px solid #ccc",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: "bold",
+        color: "#87A6B4",
+        margin: "6px auto 0",
+        fontSize: "14px",
+        borderRadius : "5px"
+      }}>
+        {sku.qtd}
+      </div>
+    </div>
+  ))}
 
+  
+  <div style={{ display: "flex", alignItems: "center", gap: "3.5vw", marginTop:"22px" }}>
+    <span style={{ fontSize: "28px", fontWeight: "bold"  ,color:"black"}} >= </span>
+    <div style={{
+      width: "25px",
+      height: "25px",
+      backgroundColor: "#fff",
+      border: "2px solid #ccc",
+      borderRadius: "8px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      fontWeight: "bold",
+      fontSize: "14px",
+      color: "#87A6B4",
+    }}>
+      <div style={{ fontSize: "16px" }}>{totalPecas}</div>
+    </div>
+  </div>
+</div>
     </main>
   );
 }
