@@ -9,6 +9,9 @@ import data from "../data/json.json";
 import imgDireita from "../img/direita.png";
 import imgEsquerda from "../img/esquerda.png";
 
+import seta from "../img/left-arrow.png";
+import vl from "../img/f.png";
+
 const products = data.products;
 
 type Product = typeof products[number];
@@ -78,6 +81,8 @@ export function Header() {
       `}</style>
 
       <header className="topo-header">
+
+        <img style={{height: "2vh", width: "4vw"}} src={seta}></img>
         <div className="seta" onClick={goPrev} style={{marginLeft: "17vw"}}>
           <img src={imgEsquerda} alt="Voltar" />
         </div>
@@ -101,7 +106,10 @@ export function Header() {
 
         <div className="seta" onClick={goNext}  style={{marginRight: "17vw"}}>
           <img src={imgDireita} alt="Avançar" />
+          
         </div>
+
+        <img style={{height: "2vh", width: "3vw"}}  src={vl}></img>
       </header>
     </>
   );
