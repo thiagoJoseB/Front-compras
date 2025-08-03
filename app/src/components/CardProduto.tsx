@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import data from "../data/json.json";
 import type { Settings } from "react-slick";
+import lupa from "../img/lupa.png";
+import detalhes from "../img/inte.png";
 
 export function CardProduto() {
   const produtos = data.products;
@@ -90,13 +92,11 @@ export function CardProduto() {
           </div>
         ))}
       </Slider>
-
       {/* Miniaturas */}
       <div
         style={{
-          marginTop: "12px",
-          height: "70px",
-          width: "150px",
+          height: "50px",
+          width: "100px",
           marginLeft: "auto",
           marginRight: "auto",
           overflow: "hidden",
@@ -135,6 +135,39 @@ export function CardProduto() {
           ))}
         </Slider>
       </div>
+      <div
+        style={{
+          width: "35px",
+          height: "40px",
+          backgroundColor: "red",
+          marginLeft: "12vw",
+          marginTop: "-38px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+
+
+        <img src={detalhes} alt="Detalhes" style={{ maxWidth: "47px", maxHeight: "7vh" }} />
+      </div>
+      <div
+        style={{
+          width: "36px",
+          height: "36px",
+          backgroundColor: "blue",
+          marginLeft: "23vw",
+          marginTop: "-10.5vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+      <img src={lupa} alt="Lupa" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
+      </div>
     </main>
   );
 }
+
+
+
