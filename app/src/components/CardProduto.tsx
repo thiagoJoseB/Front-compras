@@ -7,11 +7,64 @@ import type { Settings } from "react-slick";
 import lupa from "../img/lupa.png";
 import detalhes from "../img/inte.png";
 
+function Modal({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) {
+  if (!isOpen) return null;
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: "rgba(0,0,0,0.6)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          backgroundColor: "white",
+          padding: 20,
+          borderRadius: 8,
+          maxWidth: "90vw",
+          maxHeight: "80vh",
+          overflowY: "auto",
+          color: "black",
+        }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            background: "red",
+            color: "white",
+            border: "none",
+            borderRadius: "50%",
+            width: 30,
+            height: 30,
+            cursor: "pointer",
+            float: "right",
+            fontWeight: "bold",
+            fontSize: 16,
+            lineHeight: 1,
+          }}
+          aria-label="Fechar modal"
+        >
+          ×
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function CardProduto() {
   const produtos = data.products;
 
   const [indexProduto, setIndexProduto] = useState(0);
   const [indexImagem, setIndexImagem] = useState(0);
+  const [modalAberta, setModalAberta] = useState(false);
 
   const mainSlider = useRef<Slider | null>(null);
   const thumbSlider = useRef<Slider | null>(null);
@@ -72,6 +125,7 @@ export function CardProduto() {
       <Slider {...settingsProdutos} initialSlide={indexProduto}>
         {produtos.map((produto) => (
           <div key={produto.id}>
+            {/* Se quiser conteúdo extra no slide, pode colocar aqui */}
           </div>
         ))}
       </Slider>
@@ -92,6 +146,7 @@ export function CardProduto() {
           </div>
         ))}
       </Slider>
+
       {/* Miniaturas */}
       <div
         style={{
@@ -108,7 +163,7 @@ export function CardProduto() {
               key={img.id}
               onClick={() => {
                 setIndexImagem(idx);
-                mainSlider.current?.slickGoTo(idx); // Garante mudança
+                mainSlider.current?.slickGoTo(idx);
               }}
               style={{
                 padding: "0 3px",
@@ -124,10 +179,7 @@ export function CardProduto() {
                   height: "60px",
                   objectFit: "cover",
                   margin: "4px 0",
-                  border:
-                    indexImagem === idx
-                      ? "2px solid #00f"
-                      : "1px solid #ccc",
+                  border: indexImagem === idx ? "2px solid #00f" : "1px solid #ccc",
                   borderRadius: "4px",
                 }}
               />
@@ -135,6 +187,8 @@ export function CardProduto() {
           ))}
         </Slider>
       </div>
+
+      {/* Ícone detalhes com onClick para abrir modal */}
       <div
         style={{
           width: "35px",
@@ -145,12 +199,14 @@ export function CardProduto() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
+        onClick={() => setModalAberta(true)}
       >
-
-
         <img src={detalhes} alt="Detalhes" style={{ maxWidth: "47px", maxHeight: "7vh" }} />
       </div>
+
+      {/* Ícone lupa */}
       <div
         style={{
           width: "36px",
@@ -163,11 +219,28 @@ export function CardProduto() {
           alignItems: "center",
         }}
       >
-      <img src={lupa} alt="Lupa" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
+        <img src={lupa} alt="Lupa" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
       </div>
+
+      {/* Modal com detalhes do produto */}
+      <Modal isOpen={modalAberta} onClose={() => setModalAberta(false)}>
+        <h2>{produtoAtual.name}</h2>
+        <p><strong>Referência:</strong> {produtoAtual.reference}</p>
+        <p><strong>Categoria:</strong> {produtoAtual.categories}</p>
+        <p><strong>Subcategoria:</strong> {produtoAtual.subcategories || "—"}</p>
+        <p><strong>Tipo:</strong> {produtoAtual.type}</p>
+        <p><strong>Gênero:</strong> {produtoAtual.gender}</p>
+        <p><strong>Descrição:</strong> {produtoAtual.description || "Sem descrição disponível."}</p>
+        <p><strong>Entrega rápida:</strong> {produtoAtual.promptDelivery ? "Sim" : "Não"}</p>
+        <h3>Skus disponíveis:</h3>
+        <ul>
+          {produtoAtual.skus.map((sku) => (
+            <li key={sku.id}>
+              Tamanho: {sku.size} | Estoque: {sku.stock} | Preço: R$ {sku.price}
+            </li>
+          ))}
+        </ul>
+      </Modal>
     </main>
   );
 }
-
-
-
