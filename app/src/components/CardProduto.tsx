@@ -338,7 +338,6 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
         </div>
       </Modal>
 
-
       <div
         style={{
           width: "34px",
@@ -354,7 +353,7 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
       >
         <img src={car} alt="Carinho" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
       </div>
-
+  
  <div
   className="informacoes"
   style={{
