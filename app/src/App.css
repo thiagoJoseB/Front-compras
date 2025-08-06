@@ -82,3 +82,279 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* CSS extraído do estilo inline do componente CardProduto */
+
+.modal-close {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: black;
+}
+
+.modal-close-button {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.main-container {
+  width: 100%;
+  margin: auto;
+  color: white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  height: 68vh;
+  object-fit: cover;
+  padding-left: 12px;
+}
+
+.thumbnail-container {
+  height: 50px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.thumbnail {
+  padding: 0 3px;
+  cursor: pointer;
+  max-width: 80px;
+}
+
+.thumbnail{
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+
+.minuatura{
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+.botao-detalhes {
+  width: 35px;
+  height: 40px;
+  background-color: red;
+  margin-left: 12vw;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.botao-lupa {
+  width: 36px;
+  height: 36px;
+  background-color: blue;
+  margin-left: 23vw;
+  margin-top: -10.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input-busca {
+  width: 94%;
+  padding: 8px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.botao-busca {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #87A6B4;
+}
+
+.botao-carrinho {
+  width: 34px;
+  height: 34px;
+  background-color: blue;
+  margin-left: 66vw;
+  margin-top: -9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.informacoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  margin-top: 15px;
+}
+
+.info {
+  text-align: center;
+  width: 12%;
+}
+
+.info-nome {
+  width: 25%;
+  color: black;
+  text-align: center;
+}
+
+.info-ref {
+  width: 25%;
+  color: #87A6B4;
+  text-align: center;
+}
+
+.info-preco {
+  width: 20%;
+  color: black;
+  text-align: center;
+}
+
+.divPai {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vw;
+}
+
+.total-atual {
+  width: 20%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.adicionar, .remover {
+  width: 12%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantidade {
+  width: 10%;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}
+
+.total-geral {
+  width: 20%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.tamanhos-container {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-top: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 1vh;
+}
+
+.tamanho-circulo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #87A6B4;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  margin-left: 10vw;
+  font-size: 11px;
+}
+
+.qtd-caixa {
+  width: 30px;
+  height: 23px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #87A6B4;
+  margin: 6px auto 0;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.total-somas {
+  display: flex;
+  align-items: center;
+  gap: 3.5vw;
+  margin-top: 22px;
+}
+
+.total-somas-span {
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.total-somas-caixa {
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #87A6B4;
+}
+
+.total-somas-caixa-div {
+  font-size: 16px;
+}

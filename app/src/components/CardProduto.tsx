@@ -18,43 +18,15 @@ function Modal({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
   return (
     <div
       onClick={onClose}
-      style={{
-        position: "fixed",
-        top: 0, left: 0, right: 0, bottom: 0,
-        backgroundColor: "rgba(0,0,0,0.6)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 9999,
-      }}
+      className="modal-close"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          backgroundColor: "white",
-          padding: 20,
-          borderRadius: 8,
-          maxWidth: "90vw",
-          maxHeight: "80vh",
-          overflowY: "auto",
-          color: "black",
-        }}
+       className="modal-content"
       >
         <button
           onClick={onClose}
-          style={{
-            background: "red",
-            color: "white",
-            border: "none",
-            borderRadius: "50%",
-            width: 30,
-            height: 30,
-            cursor: "pointer",
-            float: "right",
-            fontWeight: "bold",
-            fontSize: 16,
-            lineHeight: 1,
-          }}
+          className="modal-close-button"
           aria-label="Fechar modal"
         >
           ×
@@ -173,13 +145,7 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
 
   return (
     <main
-      style={{
-        width: "100%",
-        margin: "auto",
-        color: "white",
-        borderRadius: "8px",
-        position: "relative",
-      }}
+     className="main-container "
     >
 
       <Slider {...settingsProdutos} initialSlide={indexProduto}>
@@ -197,12 +163,7 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
             <img
               src={img.path}
               alt={`Imagem ${i + 1}`}
-              style={{
-                width: "100%",
-                height: "68vh",
-                objectFit: "cover",
-                paddingLeft:"12px"
-              }}
+              className="main-image"
             />
           </div>
         ))}
@@ -210,13 +171,7 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
 
 
       <div
-        style={{
-          height: "50px",
-          width: "100px",
-          marginLeft: "auto",
-          marginRight: "auto",
-          overflow: "hidden",
-        }}
+       className="thumbnail-container"
       >
         <Slider {...settingsThumbs} ref={thumbSlider}>
           {produtoAtual.images.map((img, idx) => (
@@ -226,11 +181,7 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
                 setIndexImagem(idx);
                 mainSlider.current?.slickGoTo(idx);
               }}
-              style={{
-                padding: "0 3px",
-                cursor: "pointer",
-                maxWidth: "80px",
-              }}
+             className="thumbnail"
             >
               <img
                 src={img.path}
@@ -249,34 +200,14 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
       </div>
 
       <div
-        style={{
-          width: "35px",
-          height: "40px",
-          backgroundColor: "red",
-          marginLeft: "12vw",
-          marginTop: "-40px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
+       className="botao-detalhes"
         onClick={() => setModalAberta(true)}
       >
         <img src={detalhes} alt="Detalhes" style={{ maxWidth: "47px", maxHeight: "7vh" }} />
       </div>
 
       <div
-        style={{
-          width: "36px",
-          height: "36px",
-          backgroundColor: "blue",
-          marginLeft: "23vw",
-          marginTop: "-10.5vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
+       className="botao-lupa"
         onClick={() => {
           setBuscaReference("");
           setProdutoEncontrado(null);
@@ -312,12 +243,12 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
           placeholder="Digite a referência"
           value={buscaReference}
           onChange={(e) => setBuscaReference(e.target.value)}
-          style={{ width: "94%", padding: "8px", marginBottom: "12px", fontSize: "16px", marginTop:"10px" }}
+          className="input-busca"
           onKeyDown={(e) => {
             if (e.key === "Enter") buscarProduto();
           }}
         />
-        <button onClick={buscarProduto} style={{ padding: "8px 16px", fontSize: "16px", cursor: "pointer" , backgroundColor : "#87A6B4" }}>
+        <button onClick={buscarProduto} className="botao-busca">
           Buscar
         </button>
 
@@ -339,33 +270,16 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
       </Modal>
 
       <div
-        style={{
-          width: "34px",
-          height: "34px",
-          backgroundColor: "blue",
-          marginLeft: "66vw",
-          marginTop: "-9vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
+        className="botao-carrinho"
       >
-        <img src={car} alt="Carinho" style={{ maxWidth: "47px", maxHeight: "5.5vh" }} />
+        <img src={car} alt="Carinho" className="info"  style={{ width: "50px", height: "5.5vh" }} />
       </div>
   
  <div
   className="informacoes"
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "1vw",
-    marginTop: "15px",
-  }}
 >
 
-  <div className="info" style={{ width: "12%", textAlign: "center" }}>
+  <div className="info">
     <img
       src={down}
       style={{
@@ -376,128 +290,74 @@ const totalPecas = Object.values(quantidadesPorSku).reduce((acc, val) => acc + v
   </div>
 
 
-  <div className="info" style={{ width: "25%", textAlign: "center" ,color: "black"}}>
+  <div className="info-nome">
     {produtoAtual.name}
   </div>
 
 
-  <div className="info" style={{ width: "25%", textAlign: "center" , color: "#87A6B4"}}>
+  <div className="info-ref">
     {produtoAtual.reference}
   </div>
 
 
-  <div className="info" style={{ width: "20%", textAlign: "center",color: "black" }}>
+  <div className="info-preco">
     {produtoAtual.skus[0].price}
   </div>
 </div>
 
 <div
   className="divPai"
-  style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "1.5vw",
-  }}
 >
 
-  <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
+  <div className="total-atual">
   <p style={{ color: "black" }}>Atual</p> <p style={{color: "#87A6B4"}}> {(quantidadeAtual * precoUnitario).toFixed(2)}</p>
   </div>
 
 
-  <div
-    style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
+  <div className="adicionar"
     onClick={adicionar}
   >
     <img src={add} alt="Adicionar" style={{ width: "30px", height: "30px" }} />
   </div>
 
 
-  <div style={{ width: "10%", textAlign: "center", fontSize: "16px" }}>
+  <div className="quantidade">
     <p style={{ color: "black" }}> {quantidadeAtual}</p>
   </div>
 
 
   <div
-    style={{ width: "12%", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}
+   className="remover"
     onClick={remover}
   >
     <img src={remo} alt="Remover" style={{ width: "30px", height: "30px" }} />
   </div>
 
 
-  <div style={{ width: "20%", textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
+  <div className="total-geral">
     <p style={{ color: "black" }}>Acumulado:</p> <p style={{color: "#87A6B4"}}>R$ {valorTotalGeral}</p>
   </div>
 </div>
 
 
-<div style={{
-  display: "flex",
-  alignItems: "center",
-  gap: "1vw",
-  marginTop: "3px",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  paddingBottom:"1vh"
-}}>
+<div className="tamanhos-container">
   {skusPorTamanho.map((sku) => (
     <div key={sku.id} style={{ textAlign: "center" }}>
-      <div style={{
-        width: "20px",
-        height: "20px",
-        borderRadius: "50%",
-        backgroundColor: "#87A6B4",
-        border: "2px solid white",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: "bold",
-        color: "white",
-        marginLeft: "10vw",
-        fontSize: "11px"
-      }}>
+      <div className="tamanho-circulo ">
         {sku.size}
       </div>
 
-      <div style={{
-        width: "30px",
-        height: "23px",
-        backgroundColor: "#fff",
-        border: "2px solid #ccc",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: "bold",
-        color: "#87A6B4",
-        margin: "6px auto 0",
-        fontSize: "14px",
-        borderRadius : "5px"
-      }}>
+      <div className="qtd-caixa">
         {sku.qtd}
       </div>
     </div>
   ))}
 
   
-  <div style={{ display: "flex", alignItems: "center", gap: "3.5vw", marginTop:"22px" }}>
-    <span style={{ fontSize: "28px", fontWeight: "bold"  ,color:"black"}} >= </span>
-    <div style={{
-      width: "25px",
-      height: "25px",
-      backgroundColor: "#fff",
-      border: "2px solid #ccc",
-      borderRadius: "8px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      fontWeight: "bold",
-      fontSize: "14px",
-      color: "#87A6B4",
-    }}>
-      <div style={{ fontSize: "16px" }}>{totalPecas}</div>
+  <div className="total-somas">
+    <span className="total-somas-span" >= </span>
+    <div className="total-somas-caixa ">
+      <div className="total-somas-caixa-div">{totalPecas}</div>
     </div>
   </div>
 </div>
