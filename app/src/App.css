@@ -358,3 +358,28 @@
 .total-somas-caixa-div {
   font-size: 16px;
 }
+
+
+.topo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seta {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.seta {
+  width: 20px;
+  height: 20px;
+}

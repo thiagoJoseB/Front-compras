@@ -52,39 +52,12 @@ export function Header() {
 
   return (
     <>
-      <style>{`
-        .topo-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        
-
-        .seta {
-          width: 20px;
-          height: 20px;
-          background-color: white;
-          border-radius: 50%;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          flex-shrink: 0;
-        }
-
-        .seta img {
-          width: 20px;
-          height: 20px;
-        }
-      `}</style>
 
       <header className="topo-header">
 
         <img style={{height: "2vh", width: "4vw"}} src={seta}></img>
-        <div className="seta" onClick={goPrev} style={{marginLeft: "17vw"}}>
-          <img src={imgEsquerda} alt="Voltar" />
+        <div className="seta" onClick={goPrev}>
+          <img src={imgEsquerda} alt="Voltar" style={{height: "30px"}} />
         </div>
 
         <div className="caixa-busca">
@@ -104,8 +77,8 @@ export function Header() {
           </Slider>
         </div>
 
-        <div className="seta" onClick={goNext}  style={{marginRight: "17vw"}}>
-          <img src={imgDireita} alt="Avançar" />
+        <div className="seta" onClick={goNext}>
+          <img src={imgDireita} alt="Avançar" style={{height: "30px"}} />
           
         </div>
 
